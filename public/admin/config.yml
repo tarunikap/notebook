@@ -1,0 +1,89 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+
+  - name: "writings"
+    label: "Writings"
+    folder: "content/writings"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Hook", name: "hook", widget: "string", hint: "One-line teaser shown on the homepage." }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false, hint: "Used for sorting only. Never displayed." }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "books"
+    label: "Books"
+    folder: "content/shelf/books"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Date Added", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Personal Note", name: "body", widget: "text", required: false, hint: "This is the most important field." }
+
+  - name: "movies"
+    label: "Movies"
+    folder: "content/shelf/movies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date Added", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Personal Note", name: "body", widget: "text", required: false }
+
+  - name: "songs"
+    label: "Songs"
+    folder: "content/shelf/songs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Artist", name: "artist", widget: "string" }
+      - { label: "Date Added", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Favourite Lyric", name: "lyric", widget: "text", required: false }
+      - { label: "Personal Note", name: "body", widget: "text", required: false }
+
+  - name: "videos"
+    label: "Videos"
+    folder: "content/shelf/videos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Creator / Channel", name: "creator", widget: "string" }
+      - { label: "URL", name: "url", widget: "string" }
+      - { label: "Date Added", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Favourite Moment", name: "moment", widget: "text", required: false }
+      - { label: "Personal Note", name: "body", widget: "text", required: false }
+
+  - name: "rabbit_holes"
+    label: "Rabbit Holes"
+    folder: "content/shelf/rabbit-holes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "URL", name: "url", widget: "string" }
+      - { label: "Date Added", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Why I Saved This", name: "body", widget: "text", required: false }
+
+  - name: "currently_enjoying"
+    label: "Currently Enjoying"
+    files:
+      - label: "Currently Enjoying"
+        name: "currently_enjoying"
+        file: "content/shelf/currently-enjoying.md"
+        fields:
+          - { label: "Reading", name: "reading", widget: "string", required: false }
+          - { label: "Watching", name: "watching", widget: "string", required: false }
+          - { label: "Listening to", name: "listening", widget: "string", required: false }
